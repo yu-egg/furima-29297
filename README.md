@@ -29,16 +29,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| name(名字)         | string | null: false |
-| name(名前)         | string | null: false |
-| name(名字フリガナ) | string | null: false |
-| name(名前フリガナ) | string | null: false |
-| email              | string | null: false |
-| password           | string | null: false |
-| nickname           | string | null: false |
-| birthday           | date   | null: false |
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| first_name      | string | null: false |
+| last_name       | string | null: false |
+| first_name_kana | string | null: false |
+| last_name_kana  | string | null: false |
+| email           | string | null: false |
+| password        | string | null: false |
+| nickname        | string | null: false |
+| birthday        | date   | null: false |
 
 ### Association
 
@@ -51,7 +51,7 @@ Things you may want to cover:
 | -------------------- | ----------- | ------------------------------ |
 | user                 | references  | null: false, foreign_key: true |
 | price                | integer     | null: false                    |
-| text                 | tet         | null: false                    |
+| text                 | text        | null: false                    |
 | category             | integer     | null: false                    |
 | product_status       | integer     | null: false                    |
 | presence_of_shipping | integer     | null: false                    |
@@ -61,7 +61,7 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_one    :user_products
+- has_one    :user_product
 
 ## user_product テーブル
 
@@ -76,16 +76,16 @@ Things you may want to cover:
 - belongs_to :product
 - has_one    :street_address
 
-## street_address
+## street_addresses
 
 | Column       | Type    | Options       |
 | ------------ | ------- | ------------- |
-| postal_code  | integer | null: false   |
+| postal_code  | string  | null: false   |
 | prefectures  | integer | null: false   |
 | city         | string  | null: false   |
-| address1     | string  | null: false   |
-| address2     | string  |               |
-| phone_number | integer | null: false   |
+| address      | string  | null: false   |
+| building     | string  |               |
+| phone_number | string  | null: false   |
 
 ### Association
 
