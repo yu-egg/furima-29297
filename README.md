@@ -50,6 +50,7 @@ Things you may want to cover:
 | Column               | Type        | Options                        |
 | -------------------- | ----------- | ------------------------------ |
 | user                 | references  | null: false, foreign_key: true |
+| product_name         | string      | null: false                    |
 | price                | integer     | null: false                    |
 | text                 | text        | null: false                    |
 | category             | integer     | null: false                    |
@@ -63,7 +64,7 @@ Things you may want to cover:
 - belongs_to :user
 - has_one    :user_product
 
-## user_product テーブル
+## user_products テーブル
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
@@ -78,14 +79,15 @@ Things you may want to cover:
 
 ## street_addresses
 
-| Column       | Type    | Options       |
-| ------------ | ------- | ------------- |
-| postal_code  | string  | null: false   |
-| prefectures  | integer | null: false   |
-| city         | string  | null: false   |
-| address      | string  | null: false   |
-| building     | string  |               |
-| phone_number | string  | null: false   |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| postal_code  | string     | null: false                    |
+| prefectures  | integer    | null: false                    |
+| city         | string     | null: false                    |
+| address      | string     | null: false                    |
+| building     | string     |                                |
+| phone_number | string     | null: false                    |
+| user_product | references | null: false, foreign_key: true |
 
 ### Association
 
