@@ -35,25 +35,56 @@ Things you may want to cover:
 | email    | string | null: false |
 | password | string | null: false |
 | nickname | string | null: false |
-| birthday | string | null: false |
+| birthday | date   | null: false |
 
-## product テーブル
+### Association
 
-| Column               | Type       | Options                        |
-| -------------------- | ---------- | ------------------------------ |
-| user                 | references | null: false, foreign_key: true |
-| image                | string     | null: false                    |
-| text                 | string     | null: false                    |
-| category             | string     | null: false                    |
-| product_status       | string     | null: false                    |
-| presence_of_shipping | string     | null: false                    |
-| shipping_origin      | string     | null: false                    |
-| date_of_shipment     | string     | null: false                    |
+- has_many :products
+- has_many :user_product
 
-## purchase テーブル
+## products テーブル
 
-| Column               | Type       | Options                        |
-| -------------------- | ---------- | ------------------------------ |
-| street_address       | string     | null: false                    |
-| product_information  | references | null: false, foreign_key: true |
-| credit_card          | references | null: false, foreign_key: true |
+| Column               | Type        | Options                        |
+| -------------------- | ----------- | ------------------------------ |
+| user_name            | references  | null: false, foreign_key: true |
+| image                | string      | null: false                    |
+| text                 | string      | null: false                    |
+| category             | integer     | null: false                    |
+| product_status       | integer     | null: false                    |
+| presence_of_shipping | integer     | null: false                    |
+| shipping_origin      | integer     | null: false                    |
+| date_of_shipment     | integer     | null: false                    |
+
+### Association
+
+- belongs_to :users
+- has_many   :user_product
+
+## user_product テーブル
+
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| user_id     | references | null: false, foreign_key: true |
+| product_id  | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :users
+- belongs_to :products
+- has_one    :street_address
+
+## street_address
+
+| Column       | Type    | Options       |
+| ------------ | ------- | ------------- |
+| postal_code  | integer | null: false   |
+| prefectures  | integer | null: false   |
+| city         | string  | null: false   |
+| address1     | string  | null: false   |
+| address2     | string  |               |
+| phone_number | integer | null: false   |
+
+### Association
+
+- belongs_to :user_product
+
