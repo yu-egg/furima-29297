@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-    # image                   {Railsの処理の流れ_0409.png}
     name                    {Faker::Name.initials(number: 2)}
     text                    {Faker::Lorem.sentence}
     category_id             {3}
