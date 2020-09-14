@@ -9,11 +9,27 @@ class Item < ApplicationRecord
   has_many :users, through: :user_items
   has_many :user_items
 
-  validates :name, :text, :category, :product_status, :presence_of_shipping, :shipping_origin, :date_of_shipment, :price, presence: true, unless: :was_attached?
+  # validates :name, :text, :category, :product_status, :presence_of_shipping, :shipping_origin, :date_of_shipment, :price, presence: true, unless: :was_attached?
 
   validates  :category_id, :product_status_id, :presence_of_shipping_id, :shipping_origin_id, :date_of_shipment_id, numericality: { other_than: 1 }
 
-  def was_attached?
-    self.image.was_attached?
+  # def was_attached?
+  #   self.image.attached?
+  # end
+
+  with_options presence: true do
+    validates :price, format: { with: /\A[0-9]+\z/, message: "is invalid. Input all number"}
+    validates :price, numericality: { greater_than_or_equal_to: 300}
+    validates :price, numericality: { less_than_or_equal_to: 9_999_999}
+    validates :image
+    validates :name
+    validates :text
+    validates :category_id
+    validates :product_status_id
+    validates :presence_of_shipping_id
+    validates :shipping_origin_id
+    validates :date_of_shipment_id
+    validates :price
+    
   end
 end
