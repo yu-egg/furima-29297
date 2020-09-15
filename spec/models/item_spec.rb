@@ -49,10 +49,12 @@ describe Item do
       it "presence_of_shipping_idが空だと登録できない" do
         @item.presence_of_shipping_id = nil
         @item.valid?
+        expect(@item.errors.full_messages).to include("Presence of shipping can't be blank")
       end
       it "shipping_origin_idが空だと登録できない" do
         @item.shipping_origin_id = nil
         @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping origin can't be blank")
       end
       it "date_of_shipment_idが空だと登録できない" do
         @item.date_of_shipment_id = nil
@@ -67,30 +69,37 @@ describe Item do
       it "priceの範囲が299円以下では登録できない" do
         @item.price = "299"
         @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
       it "priceの範囲が10,000,000円以上だと登録できない" do
         @item.price = "10,000,000"
         @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
       end
       it "category_idに1が選択された場合は登録できない" do
         @item.category_id = "1"
         @item.valid?
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
       it "product_status_idに1が選択された場合は登録できない" do
         @item.product_status_id = "1"
         @item.valid?
+        expect(@item.errors.full_messages).to include("Product status must be other than 1")
       end
       it "presence_of_shipping_idに1が選択された場合は登録できない" do
         @item.presence_of_shipping_id = "1"
         @item.valid?
+        expect(@item.errors.full_messages).to include("Presence of shipping must be other than 1")
       end
       it "shipping_origin_idに1が選択された場合は登録できない" do
         @item.shipping_origin_id = "1"
         @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping origin must be other than 1")
       end
       it "date_of_shipment_idに1が選択された場合は登録できない" do
         @item.date_of_shipment_id = "1"
         @item.valid?
+        expect(@item.errors.full_messages).to include("Date of shipment must be other than 1")
       end
     end
   end
