@@ -9,6 +9,10 @@ describe Item do
   describe '商品出品'do
   
   context '商品出品がうまくいくとき' do
+
+    it "全ての値が存在すれば登録できる" do
+      expect(@item).to be_valid
+    end
     it "priceの範囲が300円以上9999999円以下だと登録できる" do
       @item.price = "500"
       @item.valid?
