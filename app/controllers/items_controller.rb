@@ -2,9 +2,7 @@ class ItemsController < ApplicationController
   :authenticate_user!
   
   def index
-    # @items = Item.all
     @items = Item.all.order("created_at DESC")
-    # @items = Item.index(params[:item_id])
   end
   
   def new
