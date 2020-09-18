@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_origin
   belongs_to_active_hash :date_of_shipment
   has_one_attached :image
-  has_many :users, through: :user_items
+  belongs_to :user
   has_many :user_items
 
 
