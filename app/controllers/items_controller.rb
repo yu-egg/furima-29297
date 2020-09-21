@@ -42,7 +42,12 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to items_path
+    if @item.destroy
+      redirect_to items_path
+    else
+      redirect_to item_path
+    end
+    
   end
 
   private
