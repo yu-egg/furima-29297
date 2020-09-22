@@ -4,8 +4,11 @@ class OrdersController < ApplicationController
     
   end
 
-  def create
+  def new
+  end
 
+  def create
+    @order = order.new(order_params)
   end
 
 end
