@@ -1,12 +1,11 @@
 class Order < ApplicationRecord
+  attr_accessor :token
   has_one :user_item
-  has_one :item
+  
 
   validates    :postal_code,    presence: true
   validates    :prefectures_id, presence: true
-  validatest   :city,           presence: true
-  validatest   :address,        presence: true
-  validatest   :building
-  validatest   :phone_number,   presence: true
-  validatest   :user_items
+  validates    :city,           presence: true
+  validates    :address,        presence: true
+  validates    :phone_number,   presence: true
 end
