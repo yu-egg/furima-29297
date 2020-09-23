@@ -1,14 +1,13 @@
 class OrdersController < ApplicationController
 
+  before_action :set_item, only: [:index, :cerate]
+
   def index
     @orders = Order.new
-    # @item = Item.all
-    @item = Item.find(params[:item_id])
     @price = @item.price.to_s(:delimited, delimiter: ',')
   end
   
   def create
-    @item = Item.find(params[:item_id])
     @order = Order.new(order_params)
     if @order.valid?
       pay_item
@@ -34,4 +33,7 @@ class OrdersController < ApplicationController
     )
   end
 
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
 end

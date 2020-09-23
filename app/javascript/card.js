@@ -3,7 +3,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     Payjp.setPublicKey("pk_test_0c46ac3895bf4185a07315a8");
     const form = document.getElementById("charge-form");
-    console.log(form)
   
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -15,11 +14,8 @@ window.addEventListener("DOMContentLoaded", () => {
         exp_month: formData.get("card-exp-month"),
         exp_year: `20${formData.get("card-exp-year")}`,
       };
-      console.log(card)
       
       Payjp.createToken(card, (status, response) => {
-        console.log(status)
-        console.log(response.id)
         if (status == 200) {
           const token = response.id;
           const renderDom = document.getElementById("charge-form");
@@ -36,5 +32,3 @@ window.addEventListener("DOMContentLoaded", () => {
       })
     })
   })
-  // window.addEventListener("lord", pay);
-  // console.log("aaa")
