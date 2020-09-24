@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  before_action :set_item, only: [:index, :cerate]
+  before_action :set_item, only: [:index, :create]
 
   def index
     @orders = Order.new
@@ -8,20 +8,19 @@ class OrdersController < ApplicationController
   end
   
   def create
-    @order = Order.new(order_params)
+    @order = OrderForm.new(order_params)
     if @order.valid?
+      # binding.pry
       pay_item
       @order.save
       return redirect_to root_path
     end
   end
 
-
-
   private
 
   def order_params
-    params.permit(:token, :postal_code, :prefectures_id, :city, :address, :building, :phone_number, :item_id)
+    params.permit(:token, :postal_code, :prefectures_id, :city, :address, :building, :phone_number, :item_id).merge(user_id: current_user.id)
   end
 
   def pay_item
