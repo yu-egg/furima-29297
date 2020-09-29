@@ -16,7 +16,6 @@ class OrderForm
     validates :phone_number, format: { with: /\A\d{11}\z/, message: "is invalid. Input all number"}
   end
 
-
   def save
     user_item = UserItem.create(user_id: user_id, item_id: item_id)
     Order.create(postal_code: postal_code, prefectures_id: prefectures_id, city: city, address: address, building: building, phone_number: phone_number, user_item_id: user_item.id)
