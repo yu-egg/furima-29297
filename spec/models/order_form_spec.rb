@@ -14,6 +14,10 @@ RSpec.describe OrderForm, type: :model do
         sleep 2
         expect(@order).to be_valid
       end
+      it "建物名が空のときでも購入できる" do
+        @order.building = ""
+      end
+
     end
 
     context '商品購入がうまくいかないとき' do
@@ -56,7 +60,7 @@ RSpec.describe OrderForm, type: :model do
       it "電話番号は11桁じゃないと購入できない" do
         @order.phone_number = "1234567890"
         @order.valid?
-        expect(@order.errors.full_messages).to include("Phone number is invalid. Input 11 number")
+        expect(@order.errors.full_messages).to include("Phone number is invalid. Input all number")
       end
     end
   end
