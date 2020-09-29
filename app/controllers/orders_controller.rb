@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
-
-  before_action :set_item, only: [:index, :create]
-
+  before_action :set_item, only: [:index, :create, :login]
+  before_action :login
+  
   def index
     @orders = Order.new
     @price = @item.price.to_s(:delimited, delimiter: ',')
@@ -33,5 +33,11 @@ class OrdersController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
+  end
+
+  def login
+    if user_signed_in? && @item.user_id == current_user.id
+      redirect_to root_path
+    end
   end
 end
