@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :date_of_shipment
   has_one_attached :image
   belongs_to :user
-  has_many :user_items
+  has_one :user_item
 
 
   validates  :category_id, :product_status_id, :presence_of_shipping_id, :shipping_origin_id, :date_of_shipment_id, numericality: { other_than: 1 }

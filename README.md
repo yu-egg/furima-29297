@@ -42,10 +42,10 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :products
-- has_many :user_products
+- has_many :items
+- has_many :user_items
 
-## products テーブル
+## items テーブル
 
 | Column                  | Type        | Options                        |
 | ----------------------- | ----------- | ------------------------------ |
@@ -62,22 +62,22 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_one    :user_product
+- has_one    :user_items
 
-## user_products テーブル
+## user_items テーブル
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | user        | references | null: false, foreign_key: true |
-| product     | references | null: false, foreign_key: true |
+| item     | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :product
-- has_one    :street_address
+- belongs_to :item
+- has_one    :order
 
-## street_addresses
+## orders
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
@@ -91,4 +91,4 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :user_product
+- belongs_to :user_items
