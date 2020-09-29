@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
   def create
     @order = OrderForm.new(order_params)
     if @order.valid?
-      # binding.pry
       pay_item
       @order.save
       return redirect_to root_path
