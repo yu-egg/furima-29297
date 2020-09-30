@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   before_action :login
   
   def index
-    @orders = Order.new
+    @order = Order.new
     @price = @item.price.to_s(:delimited, delimiter: ',')
   end
   
@@ -14,7 +14,10 @@ class OrdersController < ApplicationController
       pay_item
       @order.save
       return redirect_to root_path
+    else
+      render 'index'
     end
+
   end
 
   private
