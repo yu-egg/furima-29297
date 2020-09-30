@@ -10,7 +10,6 @@ class OrderForm
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Input '-'"}
     validates :prefectures_id
     validates :city
-    validates :building
     validates :address
     validates :phone_number, format: { with: /\A[0-9]+\z/, message: "is invalid. Input all number"}
     validates :phone_number, format: { with: /\A\d{11}\z/, message: "is invalid. Input all number"}
