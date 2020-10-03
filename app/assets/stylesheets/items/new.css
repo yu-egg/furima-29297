@@ -227,3 +227,11 @@
 .inc {
   font-size: 13px;
 }
+
+/* #（シャープ）はidを指定、.（ドット）はclassを指定 */
+/* 検証ツールでネストの確認 */
+#image-list div img {
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+}
