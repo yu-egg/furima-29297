@@ -14,7 +14,7 @@ class Item < ApplicationRecord
 
 
   with_options presence: true do
-    validates :price, format: { with: /\A[0-9]+\z/, message: "is invalid. Input all number"}
+    validates :price, format: { with: /\A[0-9]+\z/, message: "は、全て半角数字で入力してください"}
     validates :price, numericality: { greater_than_or_equal_to: 300}
     validates :price, numericality: { less_than_or_equal_to: 9_999_999}
     validates :image

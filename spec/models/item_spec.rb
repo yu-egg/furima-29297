@@ -28,82 +28,82 @@ describe Item do
       it "imageが空だと登録できない" do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Image can't be blank")
+        expect(@item.errors.full_messages).to include("画像を入力してください")
       end
       it "naemが空だと登録できない" do
         @item.name = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Name can't be blank")
+        expect(@item.errors.full_messages).to include("名前を入力してください")
       end
       it "textが空だと登録できない" do
         @item.text =  nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Text can't be blank")
+        expect(@item.errors.full_messages).to include("テキストを入力してください")
       end
       it "category_idが空だと登録できない" do
         @item.category_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include("カテゴリーは数値で入力してください")
       end
       it "product_status_idが空だと登録できない" do
         @item.product_status_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Product status can't be blank")
+        expect(@item.errors.full_messages).to include("商品の状態は数値で入力してください")
       end
       it "presence_of_shipping_idが空だと登録できない" do
         @item.presence_of_shipping_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Presence of shipping can't be blank")
+        expect(@item.errors.full_messages).to include("配送料の負担は数値で入力してください")
       end
       it "shipping_origin_idが空だと登録できない" do
         @item.shipping_origin_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping origin can't be blank")
+        expect(@item.errors.full_messages).to include("発送元の地域は数値で入力してください")
       end
       it "date_of_shipment_idが空だと登録できない" do
         @item.date_of_shipment_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Date of shipment can't be blank")
+        expect(@item.errors.full_messages).to include("発送までの日数は数値で入力してください")
       end
       it "priceが空だと登録できない" do
         @item.price = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("値段を入力してください")
       end
       it "priceの範囲が299円以下では登録できない" do
         @item.price = "299"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include("値段は300以上の値にしてください")
       end
       it "priceの範囲が10,000,000円以上だと登録できない" do
         @item.price = "10,000,000"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include("値段は数値で入力してください")
       end
       it "category_idに1が選択された場合は登録できない" do
         @item.category_id = "1"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include("カテゴリーは1以外の値にしてください")
       end
       it "product_status_idに1が選択された場合は登録できない" do
         @item.product_status_id = "1"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Product status must be other than 1")
+        expect(@item.errors.full_messages).to include("商品の状態は1以外の値にしてください")
       end
       it "presence_of_shipping_idに1が選択された場合は登録できない" do
         @item.presence_of_shipping_id = "1"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Presence of shipping must be other than 1")
+        expect(@item.errors.full_messages).to include("配送料の負担は1以外の値にしてください")
       end
       it "shipping_origin_idに1が選択された場合は登録できない" do
         @item.shipping_origin_id = "1"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping origin must be other than 1")
+        expect(@item.errors.full_messages).to include("発送元の地域は1以外の値にしてください")
       end
       it "date_of_shipment_idに1が選択された場合は登録できない" do
         @item.date_of_shipment_id = "1"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Date of shipment must be other than 1")
+        expect(@item.errors.full_messages).to include("発送までの日数は1以外の値にしてください")
       end
     end
   end
